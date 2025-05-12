@@ -1,54 +1,70 @@
-# React + TypeScript + Vite
+# PokémonWeb
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O objetivo principal deste sistema é permitir que os usuários busquem as habilidades de um Pokémon com base no seu nome. O projeto foi criado utilizando o [Vite](https://vitejs.dev/) para otimizar o ambiente de desenvolvimento e entrega de uma aplicação rápida e moderna.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Buscar habilidades de Pokémon a partir do nome.
 
-## Expanding the ESLint configuration
+## Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Vite**: Ferramenta de build e bundling de JavaScript que oferece uma experiência de desenvolvimento rápida e otimizada.
+- **Axios**: Cliente HTTP para realizar requisições à API externa que fornece as informações dos Pokémon.
+- **React Hook Form**: Biblioteca para gerenciamento de formulários.
+- **TanStack Query**: Para gerenciamento de dados e requisições assíncronas.
+- **Tailwind CSS**: Framework CSS utilitário para estilização rápida e customizada.
+- **Zod**: Biblioteca para validação de esquemas de dados.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Como Rodar o Projeto Localmente
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. **Clone este repositório:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```bash
+   git clone https://github.com/Gabriel-Gondo/pokemon-web
+   ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. **Instale as dependências:**
+
+   ```bash
+   pnpm install
+   ```
+
+3. **Inicie o servidor de desenvolvimento:**
+
+   ```bash
+   pnpm dev
+   ```
+
+4. Acesse o projeto no seu navegador através de [http://localhost:5173](http://localhost:5173).
+
+## Como Funciona
+
+O projeto utiliza uma API de dados de Pokémon para buscar as habilidades de cada Pokémon com base no nome fornecido pelo usuário. Quando o usuário digita o nome de um Pokémon e envia a busca, o sistema realiza uma requisição para a API e exibe as habilidades relacionadas ao Pokémon encontrado.
+
+### Fluxo:
+
+1. O usuário digita o nome do Pokémon na barra de pesquisa.
+2. O sistema faz uma requisição para a API externa.
+3. As habilidades do Pokémon são exibidas
+
+## Estrutura do Projeto
+
+```bash
+├── public/ # Arquivos públicos (ícones, imagens, etc)
+├── src/ # Código fonte da aplicação
+│ ├── components/ # Componentes reutilizáveis da aplicação
+│ ├── contexts/ # Contextos globais do React
+│ ├── hooks/ # Hooks personalizados
+│ ├── libs/ # Bibliotecas e utilitários
+│ ├── pages/ # Páginas principais
+│ ├── services/ # Funções auxiliares e API
+│ ├── App.tsx # Componente principal da aplicação
+│ ├── global.css # Estilos globais
+│ └── main.tsx # Ponto de entrada da aplicação
+├── index.html # HTML principal
+├── package.json # Dependências e scripts
+├── tsconfig.json # Configurações do TypeScript
+├── vite-plugin-generate-icons.ts # Plugin criado para atualizar automaticamente o icons-type
+└── README.md # Este arquivo
+
 ```
